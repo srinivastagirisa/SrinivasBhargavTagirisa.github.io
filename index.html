@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Srinivas Bhargav Tagirisa | Senior IT Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --bg-card: #111113;
+      --bg-card2: #18181b;
+      --border: #27272a;
+      --accent: #0ea5e9;
+      --accent2: #8b5cf6;
+      --accent3: #10b981;
+      --text: #fafafa;
+      --text-muted: #71717a;
+      --text-secondary: #a1a1aa;
+      --aa-red: #cc0000;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(9,9,11,0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 1.75rem; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 7rem 2rem 4rem;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(14,165,233,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-glow {
+      position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 450px;
+      background: radial-gradient(ellipse, rgba(14,165,233,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; text-align: center; max-width: 920px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid var(--border); background: var(--bg-card);
+      border-radius: 999px; padding: .4rem 1rem; font-size: .8rem;
+      color: var(--text-secondary); margin-bottom: 2rem;
+    }
+    .hero-badge span { color: var(--accent3); }
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.8rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem;
+    }
+    .hero-title .name {
+      background: linear-gradient(135deg, #fff 30%, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-title .role {
+      display: block; font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+      font-weight: 500; color: var(--text-secondary); margin-top: .6rem;
+    }
+    .hero-desc { font-size: 1.05rem; color: var(--text-secondary); max-width: 650px; margin: 0 auto 2.5rem; }
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: .75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
+    .hero-cta { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.75rem; border-radius: 8px;
+      font-size: .9rem; font-weight: 600; text-decoration: none;
+      transition: all .2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #0284c7); color: #fff; }
+    .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; margin-bottom: 1rem; }
+    .section-subtitle { color: var(--text-secondary); max-width: 640px; margin-bottom: 3rem; }
+    .section-divider { max-width: 1100px; margin: 0 auto; border: none; border-top: 1px solid var(--border); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8; }
+    .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+    .highlight-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.2rem; display: flex; align-items: flex-start; gap: 1rem; transition: border-color .2s;
+    }
+    .highlight-card:hover { border-color: var(--accent); }
+    .highlight-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .icon-blue { background: rgba(14,165,233,.15); }
+    .icon-purple { background: rgba(139,92,246,.15); }
+    .icon-green { background: rgba(16,185,129,.15); }
+    .icon-orange { background: rgba(245,158,11,.15); }
+    .highlight-body h4 { font-size: .9rem; font-weight: 600; margin-bottom: .2rem; }
+    .highlight-body p { font-size: .82rem; color: var(--text-secondary); }
+
+    /* ACHIEVEMENTS */
+    .aa-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .aa-logo-wrapper { background: #fff; border-radius: 12px; padding: .65rem 1.1rem; display: flex; align-items: center; }
+    .aa-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--aa-red); }
+    .achievement-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .achievement-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem;
+      position: relative; overflow: hidden; transition: all .25s;
+    }
+    .achievement-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity .25s;
+    }
+    .achievement-card:hover { border-color: rgba(14,165,233,.4); transform: translateY(-2px); }
+    .achievement-card:hover::before { opacity: 1; }
+    .achievement-tag {
+      display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; padding: .2rem .6rem; border-radius: 4px; margin-bottom: 1rem;
+    }
+    .tag-infra { background: rgba(14,165,233,.15); color: var(--accent); }
+    .tag-security { background: rgba(139,92,246,.15); color: var(--accent2); }
+    .tag-automation { background: rgba(16,185,129,.15); color: var(--accent3); }
+    .tag-migration { background: rgba(245,158,11,.15); color: #f59e0b; }
+    .tag-ops { background: rgba(239,68,68,.15); color: #ef4444; }
+    .achievement-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .5rem; }
+    .achievement-card p { font-size: .875rem; color: var(--text-secondary); line-height: 1.7; }
+    .achievement-metric { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: .8rem; font-weight: 600; color: var(--accent3); }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), rgba(139,92,246,.1));
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-dot {
+      position: absolute; left: -2.45rem; top: .3rem;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(14,165,233,.2);
+    }
+    .timeline-date { font-size: .78rem; color: var(--accent); font-weight: 600; margin-bottom: .3rem; }
+    .timeline-role { font-size: 1.05rem; font-weight: 600; margin-bottom: .1rem; }
+    .timeline-company { font-size: .875rem; color: var(--text-secondary); margin-bottom: .75rem; }
+    .timeline-desc { font-size: .85rem; color: var(--text-secondary); line-height: 1.75; }
+    .timeline-desc ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+
+    /* SKILLS */
+    .skills-container { display: flex; flex-direction: column; gap: 2.5rem; }
+    .skill-category h3 { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .skill-tag {
+      display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .85rem; border-radius: 8px;
+      font-size: .83rem; font-weight: 500; background: var(--bg-card2); border: 1px solid var(--border);
+      color: var(--text-secondary); transition: all .2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--text); }
+    .skill-tag.primary { background: rgba(14,165,233,.1); border-color: rgba(14,165,233,.3); color: var(--accent); }
+
+    /* CERTIFICATIONS */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+    .cert-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem;
+      display: flex; align-items: flex-start; gap: 1rem; transition: all .25s;
+    }
+    .cert-card:hover { border-color: rgba(139,92,246,.45); transform: translateY(-2px); }
+    .cert-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .cert-body h4 { font-size: .92rem; font-weight: 600; margin-bottom: .2rem; }
+    .cert-body p { font-size: .78rem; color: var(--text-secondary); }
+    .cert-body .cert-date { font-size: .72rem; color: var(--accent2); font-weight: 600; margin-top: .3rem; }
+
+    /* EDUCATION */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .edu-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem;
+      transition: all .25s;
+    }
+    .edu-card:hover { border-color: rgba(16,185,129,.4); transform: translateY(-2px); }
+    .edu-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .edu-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .2rem; }
+    .edu-card .degree { font-size: .875rem; color: var(--accent3); font-weight: 600; margin-bottom: .2rem; }
+    .edu-card .years { font-size: .8rem; color: var(--text-muted); margin-bottom: .6rem; }
+    .edu-card p { font-size: .83rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* LEARNING */
+    .learning-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.5rem; }
+    .learning-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem;
+      transition: all .25s;
+    }
+    .learning-card:hover { border-color: rgba(139,92,246,.5); transform: translateY(-2px); }
+    .learning-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+    .learning-card h3 { font-size: .98rem; font-weight: 600; margin-bottom: .4rem; }
+    .learning-card p { font-size: .83rem; color: var(--text-secondary); }
+    .learning-status { display: inline-flex; align-items: center; gap: .35rem; font-size: .75rem; font-weight: 600; margin-top: 1rem; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .status-completed { color: var(--accent3); }
+    .status-completed .status-dot { background: var(--accent3); }
+    .status-ongoing { color: var(--accent); }
+    .status-ongoing .status-dot { background: var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* CONTACT */
+    .contact-wrapper {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+      position: relative; overflow: hidden;
+    }
+    .contact-wrapper::before {
+      content: ''; position: absolute; top: -50%; right: -10%; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(14,165,233,.08) 0%, transparent 70%); pointer-events: none;
+    }
+    .contact-text h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: .5rem; }
+    .contact-text p { color: var(--text-secondary); }
+    .contact-links { display: flex; flex-direction: column; gap: .75rem; }
+    .contact-link { display: flex; align-items: center; gap: .75rem; color: var(--text-secondary); text-decoration: none; font-size: .9rem; transition: color .2s; }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: .8rem; }
+
+    /* ANIMATION */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SBT</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#career">Career</a>
+    <a href="#skills">Skills</a>
+    <a href="#certs">Certifications</a>
+    <a href="#learning">Learning</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span>●</span> Open to new opportunities</div>
+    <h1 class="hero-title">
+      <span class="name">Srinivas Bhargav<br>Tagirisa</span>
+      <span class="role">Senior IT Engineer · VDI &amp; Cloud Infrastructure</span>
+    </h1>
+    <p class="hero-desc">
+      8+ years engineering enterprise VDI and hybrid cloud platforms — from deploying VMware Horizon for
+      40+ global customers to managing critical airport infrastructure at American Airlines.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30K+</div>
+        <div class="stat-label">VDI Instances Managed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">132</div>
+        <div class="stat-label">Global Customers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">550+</div>
+        <div class="stat-label">Apps Migrated</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#achievements" class="btn btn-primary">View Achievements</a>
+      <a href="https://www.linkedin.com/in/srinivas-bhargav-tagirisa-90028b15b/" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="fade-in">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Engineer. Problem-Solver. Lifelong Learner.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a Senior IT Engineer with 8+ years of experience in Virtual Desktop Infrastructure (VDI)
+        and hybrid cloud platforms. Currently at <strong>American Airlines</strong>, I manage large-scale
+        VMware Horizon environments on Azure VMware Solution (AVS) that power airport kiosk and
+        operational services across multiple regions.
+      </p>
+      <p>
+        My career spans roles at VMware itself — where I deployed Horizon Cloud on IBM SoftLayer, Azure,
+        and AWS for 40+ customers managing 30,000+ VDI instances — through enterprise consulting at
+        Conagra Brands, to my current role at one of the world's largest airlines.
+      </p>
+      <p>
+        I hold a Master's in Information Technology from the University of North Texas (GPA 3.8/4.0)
+        and multiple Omnissa, Microsoft, and AI certifications. I'm passionate about automation,
+        clean infrastructure design, and continuous learning.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <div class="highlight-icon icon-blue">✈️</div>
+        <div class="highlight-body">
+          <h4>American Airlines — Sr. IT Engineer, EUC</h4>
+          <p>Aug 2023 – Present · Dallas, TX · Managing multi-region VMware Horizon on AVS for 7,000+ users.</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon icon-purple">🎓</div>
+        <div class="highlight-body">
+          <h4>University of North Texas</h4>
+          <p>M.S. Information Technology · Jan 2022 – May 2023 · GPA 3.8/4.0</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon icon-green">🏅</div>
+        <div class="highlight-body">
+          <h4>Omnissa Certified Administrator – Horizon</h4>
+          <p>Issued Sep 2025 · Expires Sep 2027 · BrightLink</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon icon-orange">📍</div>
+        <div class="highlight-body">
+          <h4>Based in Dallas, TX</h4>
+          <p>On-site at American Airlines HQ — one of the world's largest airline operations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- ACHIEVEMENTS AT AA -->
+<section id="achievements" class="fade-in">
+  <div class="aa-header">
+    <div class="aa-logo-wrapper"><span class="aa-logo-text">AA</span></div>
+    <div>
+      <div class="section-label">Current Role · Aug 2023 – Present</div>
+      <h2 class="section-title" style="margin-bottom:0">Key Achievements at American Airlines</h2>
+      <p style="color:var(--text-secondary);font-size:.875rem;margin-top:.3rem;">Sr. IT Engineer — End User Compute · Dallas, TX · On-site</p>
+    </div>
+  </div>
+
+  <div class="achievement-grid">
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-infra">Infrastructure</span>
+      <h3>Multi-Region VDI Fleet Management</h3>
+      <p>Managing large-scale multi-region VMware Horizon on Azure VMware Solution (AVS) infrastructure supporting 7,000+ users across airport kiosk and operational services — ensuring SLA adherence and peak performance.</p>
+      <div class="achievement-metric">↑ 7,000+ users across multiple regions</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-infra">Platform Upgrades</span>
+      <h3>End-to-End Horizon Upgrades</h3>
+      <p>Led two full production upgrades — Horizon 2111.1 → 2212.1 → 2312.1 — coordinating change windows, dependencies, and validations. Also upgraded App Volumes from v2206 (4.7.0.64) to v2312 (4.13.0.69) across Non-Prod and Prod environments.</p>
+      <div class="achievement-metric">↑ Zero unplanned downtime across all upgrades</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-automation">Automation</span>
+      <h3>Horizon Event DB Cleanup via Azure Automation</h3>
+      <p>Built and ran automated Horizon event database cleanup across both Non-Prod and Prod environments using Azure Automation — eliminating manual toil, improving hygiene, and reducing operational overhead.</p>
+      <div class="achievement-metric">↑ Fully automated — zero manual intervention</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-automation">Optimization</span>
+      <h3>Amazon Connect — Browser Content Redirection</h3>
+      <p>Implemented VMware Browser Content Redirection for the Amazon Connect solution used by service desk users — offloading browser rendering from VMs and significantly reducing resource consumption.</p>
+      <div class="achievement-metric">↑ Improved service desk agent performance</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-migration">Migration</span>
+      <h3>550+ Cognos Apps: Citrix → VMware Horizon</h3>
+      <p>Successfully migrated 550+ Cognos business application users from Citrix to VMware Horizon — managing cutover planning, application compatibility validation, and user communication to ensure a seamless transition.</p>
+      <div class="achievement-metric">↑ 550+ users migrated, no rollbacks</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-security">Security</span>
+      <h3>UAG Upgrade + WS1 SAML Integration</h3>
+      <p>Upgraded Non-Prod and Prod Unified Access Gateways to v23.12 and integrated them with Workspace ONE SAML authentication. Renewed Connection Server and UAG certificates proactively before expiration — preventing auth outages.</p>
+      <div class="achievement-metric">↑ Zero certificate-related outages</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-security">Identity</span>
+      <h3>Omnissa WS1 Metadata Certificate Update</h3>
+      <p>Led the metadata certificate update for Omnissa Workspace ONE, ensuring uninterrupted VDI access internally and externally. Coordinated change activities, implemented pre-validation steps (external WS1 bypass), and conducted thorough post-change validation.</p>
+      <div class="achievement-metric">↑ Zero user impact during certificate rotation</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-ops">Monitoring</span>
+      <h3>ControlUp 9.1.0 Multi-Region Upgrade</h3>
+      <p>Led ControlUp 9.1.0 upgrade across multiple regions — unlocking enhanced monitoring capabilities including browser URL tracking and automated agent sync for improved visibility into VDI session health.</p>
+      <div class="achievement-metric">↑ Enhanced real-time monitoring coverage</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-ops">Cost Optimization</span>
+      <h3>Azure VM Right-Sizing Initiative</h3>
+      <p>Drove cost-saving initiatives by analyzing and right-sizing Azure VM resources across the organization — ensuring optimal performance and efficiency while reducing cloud spend.</p>
+      <div class="achievement-metric">↑ Reduced Azure infrastructure costs</div>
+    </div>
+
+    <div class="achievement-card">
+      <span class="achievement-tag tag-ops">Operations</span>
+      <h3>Instant Clone Pool Lifecycle Management</h3>
+      <p>Maintained and performed regular updates on instant clone desktop pools — keeping images patched, validated, and aligned with enterprise security baselines to ensure reliable, consistent user experience.</p>
+      <div class="achievement-metric">↑ Consistent patch compliance across all pools</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- CAREER TIMELINE -->
+<section id="career" class="fade-in">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">Experience Timeline</h2>
+  <p class="section-subtitle">8+ years delivering VDI and cloud infrastructure across VMware, enterprise consulting, and airlines.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Aug 2023 – Present · 2 yrs 11 mos</div>
+      <div class="timeline-role">Sr. IT Engineer — End User Compute</div>
+      <div class="timeline-company">American Airlines · Full-time · Dallas, TX · On-site</div>
+      <div class="timeline-desc">
+        <ul>
+          <li>Managing large-scale multi-region VMware Horizon on AVS infrastructure for 7,000+ users.</li>
+          <li>Upgraded Horizon PROD from 2111.1 → 2212.1 → 2312.1 and App Volumes from v2206 to v2312.</li>
+          <li>Implemented Browser Content Redirection for Amazon Connect service desk solution.</li>
+          <li>Automated Horizon event DB cleanup across Non-Prod and Prod using Azure Automation.</li>
+          <li>Migrated 550+ Cognos business users from Citrix to VMware Horizon.</li>
+          <li>Upgraded UAGs to v23.12; integrated with Workspace ONE SAML authentication.</li>
+          <li>Led ControlUp 9.1.0 upgrade across regions; led WS1 metadata certificate update.</li>
+          <li>Drove Azure VM right-sizing cost-saving initiatives across the organization.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:rgba(14,165,233,.6)"></div>
+      <div class="timeline-date">Jul 2023 – Aug 2023 · 2 mos</div>
+      <div class="timeline-role">VMware Horizon Senior Consultant</div>
+      <div class="timeline-company">Conagra Brands · Contract · Dallas, TX · Remote</div>
+      <div class="timeline-desc">
+        <ul>
+          <li>Implemented and configured VMware Horizon VDI (10,000+ VDIs) with Horizon View 8.6.0 (2206) &amp; 8.4.0 (2111).</li>
+          <li>Deployed full clone and instant clone desktop pools; created and upgraded master/golden images.</li>
+          <li>Implemented AppVolumes 4.X, AppStacks; migrated AppStacks 2.X → 4.X. Configured VMware DEM 2206.</li>
+          <li>Implemented ControlUp 8.7.0 and Scoutbees for monitoring. Upgraded vCenter/vSphere 6.5 → 7.0.3.</li>
+          <li>Implemented Thinkiosk 7.1.52 for Citrix VDI; configured Thinscale thin kiosk deployments.</li>
+          <li>Implemented Microsoft LAPS; supported Citrix XenDesktop, XenApp, NetScaler, StoreFront.</li>
+          <li>Managed Dell Avamar Power Protect DP(IDPA) 4400; upgraded DP4400/IDPA 2.4.1 → 2.7.2.</li>
+          <li>Implemented Azure Virtual Desktop (AVD) POC; managed Azure Web App services and certificates.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--accent2)"></div>
+      <div class="timeline-date">Mar 2020 – Jan 2022 · 1 yr 11 mos</div>
+      <div class="timeline-role">VMware EUC Cloud Operations Engineer</div>
+      <div class="timeline-company">VMware · Contract · Bengaluru, India · Hybrid</div>
+      <div class="timeline-desc">
+        <ul>
+          <li>Managed and monitored VMware Horizon Cloud on Azure components (node managers, UAGs) via Sauron monitoring tool.</li>
+          <li>Upgraded customer PODs to latest versions; ran pre-checks and post-checks for green build deployments.</li>
+          <li>Assisted customers in establishing secure site-to-site VPN between Azure Cloud and on-premises Horizon environments.</li>
+          <li>Guided customers in integrating on-premises Active Directory with Azure AD using AD Connect.</li>
+          <li>Troubleshot VDI environments: black screen, slowness, missing user profiles, application issues.</li>
+          <li>Documented knowledge base and technical issues in Confluence; managed Jira tickets for end user issues.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--accent3)"></div>
+      <div class="timeline-date">Jul 2017 – Feb 2020 · 2 yrs 8 mos</div>
+      <div class="timeline-role">Horizon Cloud Deployment Engineer / VMware Cloud VDI Engineer</div>
+      <div class="timeline-company">VMware · Contract · Bengaluru, India · Hybrid</div>
+      <div class="timeline-desc">
+        <ul>
+          <li>Implemented VMware Horizon Cloud on IBM SoftLayer, Azure, and AWS for 40+ customers — managing 30,000+ VDI instances.</li>
+          <li>Migrated VDI environments for 132 global customers: 20,000+ VMs from vCloud Air to Horizon Cloud on IBM SoftLayer using HCX tool.</li>
+          <li>Configured and managed customers' AD, DNS, and DHCP across Horizon Cloud on IBM SoftLayer and on-premises.</li>
+          <li>Deployed and managed desktop pools (dedicated/floating, full clone/instant clone); published session-based desktops and apps via RDSH.</li>
+          <li>Integrated VMware Identity Manager / Workspace ONE with Horizon Cloud on IBM SoftLayer and Azure.</li>
+          <li>Deployed and managed Horizon Cloud on Azure PODs and UAGs in the Horizon Universal Control Plane.</li>
+          <li>Configured universal broker across multiple regions for consistent user experience.</li>
+          <li>Created app volume applications in HZoA platform by capturing and packaging apps.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- SKILLS -->
+<section id="skills" class="fade-in">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-title">Stack &amp; Expertise</h2>
+  <p class="section-subtitle">Technologies I've deployed, managed, and mastered across production enterprise environments.</p>
+
+  <div class="skills-container">
+    <div class="skill-category">
+      <h3>VDI &amp; End User Computing</h3>
+      <div class="skill-tags">
+        <span class="skill-tag primary">VMware Horizon (8.x / 2312)</span>
+        <span class="skill-tag primary">Azure VMware Solution (AVS)</span>
+        <span class="skill-tag primary">Omnissa / Workspace ONE</span>
+        <span class="skill-tag">App Volumes 4.x</span>
+        <span class="skill-tag">VMware DEM</span>
+        <span class="skill-tag">Instant Clone Pools</span>
+        <span class="skill-tag">Citrix XenDesktop / XenApp</span>
+        <span class="skill-tag">Azure Virtual Desktop (AVD)</span>
+        <span class="skill-tag">AWS WorkSpaces</span>
+        <span class="skill-tag">ControlUp</span>
+        <span class="skill-tag">Thinkiosk / Thinscale</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Cloud &amp; Infrastructure</h3>
+      <div class="skill-tags">
+        <span class="skill-tag primary">Microsoft Azure</span>
+        <span class="skill-tag primary">AWS (EC2, S3, VPC, IAM, Lambda)</span>
+        <span class="skill-tag">Azure Automation</span>
+        <span class="skill-tag">vSphere / ESXi 7.0.3</span>
+        <span class="skill-tag">vCenter</span>
+        <span class="skill-tag">Cisco UCS</span>
+        <span class="skill-tag">Dell iDRAC</span>
+        <span class="skill-tag">IBM SoftLayer</span>
+        <span class="skill-tag">VMware Update Manager</span>
+        <span class="skill-tag">HCX Migration Tool</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Security &amp; Identity</h3>
+      <div class="skill-tags">
+        <span class="skill-tag primary">Unified Access Gateways (UAG v23.12)</span>
+        <span class="skill-tag primary">SAML / SSO / WS1 Authentication</span>
+        <span class="skill-tag">Azure Active Directory / AD Connect</span>
+        <span class="skill-tag">VMware Identity Manager</span>
+        <span class="skill-tag">Microsoft LAPS</span>
+        <span class="skill-tag">PKCS#12 Certificate Management</span>
+        <span class="skill-tag">VMCA Certificates</span>
+        <span class="skill-tag">Arctic Wolf (SIEM)</span>
+        <span class="skill-tag">NXLog</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Networking &amp; Servers</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">AD / DNS / DHCP</span>
+        <span class="skill-tag">NSGs</span>
+        <span class="skill-tag">Azure Load Balancers</span>
+        <span class="skill-tag">Site-to-Site VPN</span>
+        <span class="skill-tag">VNet / Subnets / VNet Peering</span>
+        <span class="skill-tag">NetScaler</span>
+        <span class="skill-tag">StoreFront</span>
+        <span class="skill-tag">Windows Server 2019</span>
+        <span class="skill-tag">IIS</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Scripting, Monitoring &amp; DevOps</h3>
+      <div class="skill-tags">
+        <span class="skill-tag primary">PowerShell</span>
+        <span class="skill-tag primary">Python</span>
+        <span class="skill-tag">Azure Automation</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Azure DevOps (ADO)</span>
+        <span class="skill-tag">Grafana</span>
+        <span class="skill-tag">Sauron Monitoring</span>
+        <span class="skill-tag">Confluence / Jira</span>
+        <span class="skill-tag">SCCM</span>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Backup &amp; Recovery</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Dell Avamar</span>
+        <span class="skill-tag">Power Protect DP4400 / IDPA</span>
+        <span class="skill-tag">Cohesity</span>
+        <span class="skill-tag">Data Domain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- CERTIFICATIONS -->
+<section id="certs" class="fade-in">
+  <div class="section-label">Certifications</div>
+  <h2 class="section-title">Credentials &amp; Badges</h2>
+  <p class="section-subtitle">Industry-validated certifications across VDI, cloud, AI, and infrastructure.</p>
+
+  <div class="certs-grid">
+
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div class="cert-body">
+        <h4>Omnissa Certified Administrator – Horizon</h4>
+        <p>BrightLink</p>
+        <div class="cert-date">Issued Sep 2025 · Expires Sep 2027</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">🖥️</div>
+      <div class="cert-body">
+        <h4>Omnissa Certified Professional – Desktop</h4>
+        <p>BrightLink</p>
+        <div class="cert-date">Issued Dec 2024 · Expires Dec 2026</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div class="cert-body">
+        <h4>Microsoft Azure Administrator (AZ-104)</h4>
+        <p>Microsoft</p>
+        <div class="cert-date">Microsoft Certified</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">🤖</div>
+      <div class="cert-body">
+        <h4>AWS AI Practitioner Challenge</h4>
+        <p>Udacity</p>
+        <div class="cert-date">Issued Mar 2026</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">🖱️</div>
+      <div class="cert-body">
+        <h4>IGEL Foundations</h4>
+        <p>IGEL Technology · ID: 5usfv56yzeuj</p>
+        <div class="cert-date">Issued Jan 2026</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">⚙️</div>
+      <div class="cert-body">
+        <h4>AI OPS</h4>
+        <p>BigPanda — IT Operations AI for day-to-day management</p>
+        <div class="cert-date">Issued Feb 2025</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- EDUCATION -->
+<section id="education" class="fade-in">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic Background</h2>
+
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <h3>University of North Texas</h3>
+      <div class="degree">Master's Degree — Information Technology</div>
+      <div class="years">Jan 2022 – May 2023 · GPA 3.8 / 4.0</div>
+      <p>Coursework: Database Management Systems · Information Systems Development · Data Visualization for Analytics · Enterprise Business Intelligence · Python for Business Analytics · Information Security Management · Data Mining &amp; Machine Learning · Networking &amp; Telecommunications · Emerging Information Technologies · Strategic Use of IT</p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">🏫</div>
+      <h3>KL University</h3>
+      <div class="degree">Bachelor's Degree — Mechanical Engineering</div>
+      <div class="years">2011 – 2016</div>
+      <p>Vijayawada, India. Foundational engineering education with strong problem-solving and analytical skills that carry into IT infrastructure work.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- LEARNING JOURNEY -->
+<section id="learning" class="fade-in">
+  <div class="section-label">Learning Journey</div>
+  <h2 class="section-title">Always Growing</h2>
+  <p class="section-subtitle">Continuous investment in certifications, new technologies, and skills that keep me ahead in a fast-moving field.</p>
+
+  <div class="learning-grid">
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(14,165,233,.12)">🏅</div>
+      <h3>Omnissa / VMware Horizon Mastery</h3>
+      <p>Achieved both Omnissa Certified Professional (Desktop) and Omnissa Certified Administrator (Horizon) — the top certifications in the VDI space.</p>
+      <div class="learning-status status-completed"><span class="status-dot"></span>Completed · Dec 2024 &amp; Sep 2025</div>
+    </div>
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(139,92,246,.12)">☁️</div>
+      <h3>Microsoft Azure (AZ-104)</h3>
+      <p>Certified Azure Administrator — validating expertise in Azure identity, governance, storage, compute, and networking at enterprise scale.</p>
+      <div class="learning-status status-completed"><span class="status-dot"></span>Completed</div>
+    </div>
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(245,158,11,.12)">🤖</div>
+      <h3>AWS AI Practitioner</h3>
+      <p>Completed Udacity's AWS AI Practitioner Challenge — building foundational knowledge of AI/ML services on AWS and their practical applications in IT operations.</p>
+      <div class="learning-status status-completed"><span class="status-dot"></span>Completed · Mar 2026</div>
+    </div>
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(16,185,129,.12)">⚙️</div>
+      <h3>AI OPS — BigPanda</h3>
+      <p>Certified in AI-driven IT Operations management — applying machine learning to streamline incident correlation, noise reduction, and change intelligence in enterprise environments.</p>
+      <div class="learning-status status-completed"><span class="status-dot"></span>Completed · Feb 2025</div>
+    </div>
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(239,68,68,.12)">🖱️</div>
+      <h3>IGEL Foundations</h3>
+      <p>Certified in IGEL OS — the leading thin client / endpoint OS for VDI environments — expanding expertise in modern endpoint management strategies alongside VMware and Citrix stacks.</p>
+      <div class="learning-status status-completed"><span class="status-dot"></span>Completed · Jan 2026</div>
+    </div>
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(14,165,233,.12)">🐍</div>
+      <h3>Python &amp; Automation for IT Ops</h3>
+      <p>Applying Python scripting (studied at UNT) to automate VDI health checks, reporting pipelines, and Azure API integrations — reducing manual operational work.</p>
+      <div class="learning-status status-ongoing"><span class="status-dot"></span>Ongoing</div>
+    </div>
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(139,92,246,.12)">📊</div>
+      <h3>Data Visualization &amp; Business Intelligence</h3>
+      <p>Graduate coursework in Data Visualization for Analytics, Enterprise BI, and Data Mining &amp; Machine Learning — bridging IT infrastructure with data-driven insights.</p>
+      <div class="learning-status status-completed"><span class="status-dot"></span>Completed (UNT)</div>
+    </div>
+
+    <div class="learning-card">
+      <div class="learning-icon" style="background:rgba(16,185,129,.12)">📜</div>
+      <h3>SOPs &amp; Knowledge Base Building</h3>
+      <p>Developing and maintaining Standard Operating Procedures for VDI operations at American Airlines — improving team efficiency and reducing mean time to resolve incidents.</p>
+      <div class="learning-status status-ongoing"><span class="status-dot"></span>Active practice</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- CONTACT -->
+<section id="contact" class="fade-in">
+  <div class="contact-wrapper">
+    <div class="contact-text">
+      <div class="section-label">Get in Touch</div>
+      <h2>Let's Connect</h2>
+      <p>Open to conversations about VDI, cloud infrastructure, and new opportunities.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:srinivastagirisa@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        srinivastagirisa@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/srinivas-bhargav-tagirisa-90028b15b/" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/srinivas-bhargav-tagirisa
+      </a>
+      <a href="tel:+19086990233" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.94-1.01a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (908) 699-0233
+      </a>
+      <a class="contact-link" style="cursor:default">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Dallas, TX
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Srinivas Bhargav Tagirisa · Senior IT Engineer · Dallas, TX · 2025</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
